@@ -1,0 +1,17 @@
+services:
+  node-api:
+    build: .
+    env_file: .env
+    ports:
+      - "8080:8080"
+    depends_on:
+      - python-agents
+    restart: unless-stopped
+  python-agents:
+    build:
+      context: .
+      dockerfile: python-agents/Dockerfile
+    env_file: .env
+    ports:
+      - "8090:8090"
+    restart: unless-stopped

@@ -1,0 +1,15 @@
+{
+  "name": "esn-ai-studio-dashboard",
+  "version": "1.0.0",
+  "description": "ESN Consultancy AI business automation dashboard with Node.js API, Python multi-agent orchestration, CRM, webhooks, integrations, and deployment scaffold.",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/src/server.js",
+    "dev": "node --watch backend/src/server.js",
+    "test": "node --test backend/tests/*.test.js",
+    "lint": "node --check backend/src/server.js && node --check backend/src/app.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
