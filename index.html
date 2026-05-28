@@ -99,7 +99,7 @@
     </style>
 </head>
 <body>
-    <canvas id="particles"></canvas>
+    <canvas id="particles" aria-hidden="true" role="presentation"></canvas>
     
     <div class="container">
         <div class="header">
@@ -154,63 +154,9 @@
         </div>
     </div>
     
-    <div class="neural-viz"><span>AI ACTIVE</span></div>
+    <div class="neural-viz" aria-hidden="true"><span>AI ACTIVE</span></div>
     
-    <script>
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        const particles = [];
-        for (let i = 0; i < 100; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                radius: Math.random() * 2 + 1
-            });
-        }
-        
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-            
-            particles.forEach(p => {
-                p.x += p.vx;
-                p.y += p.vy;
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fill();
-            });
-            requestAnimationFrame(animate);
-        }
-        
-        animate();
-        
-        const activities = [
-            { text: 'New AI model deployed: NeuralNet-V5', time: '2 minutes ago' },
-            { text: 'Team meeting scheduled for tomorrow', time: '15 minutes ago' },
-            { text: 'System backup completed successfully', time: '1 hour ago' },
-            { text: 'New employee onboarded: Sarah Chen', time: '3 hours ago' },
-            { text: 'Q4 performance report generated', time: '5 hours ago' }
-        ];
-        
-        const activityDiv = document.getElementById('activity');
-        activities.forEach(activity => {
-            const item = document.createElement('div');
-            item.className = 'activity-item';
-            item.innerHTML = `<p>${activity.text}</p><small>${activity.time}</small>`;
-            activityDiv.appendChild(item);
-        });
-        
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    </script>
+    <script src="dashboard.js"></script>
+    <script>initDashboard();</script>
 </body>
 </html>
